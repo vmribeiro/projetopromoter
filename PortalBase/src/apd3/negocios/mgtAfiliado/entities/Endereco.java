@@ -12,11 +12,11 @@ import java.io.Serializable;
  * @author vmrib
  */
 public class Endereco implements Serializable{
+    private int Id;
     private String rua;
     private String cidade;
     private String estado;
     private String cep;
-    private String pais;
 
     public String getRua() {
         return rua;
@@ -24,6 +24,14 @@ public class Endereco implements Serializable{
 
     public void setRua(String rua) {
         this.rua = rua;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getCidade() {
@@ -48,15 +56,6 @@ public class Endereco implements Serializable{
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-    
+    }   
     
 }

@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author vmrib
  */
 public class Servico implements Serializable {
+    private int Id;
     private Promoter promoter;
     private String nome;
     private String descricao;
@@ -39,6 +40,14 @@ public class Servico implements Serializable {
     public String getDescricao() {
         return descricao;
     }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }    
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;

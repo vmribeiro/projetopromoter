@@ -39,6 +39,8 @@ public class FrontControllerServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            //Pega a ação a ser executada pelo controller
+            String action = request.getParameter("action");
             //Pega o parâmetro control enviado pela requisição HTTP
             String controller = request.getParameter("control");
             //Pega um objeto de alguma classe que implemente a interface Controller
@@ -46,7 +48,7 @@ public class FrontControllerServlet extends HttpServlet {
             //Inicializa o controller
             control.init(request);
             //Executa a ação
-            control.execute();
+            control.execute(action);
             //Define a página de resposta
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(control.getReturnPage());
             //Redireciona para a página de resposta

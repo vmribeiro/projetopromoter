@@ -15,6 +15,7 @@ import java.util.List;
  */
 public abstract class Entidade implements Serializable {
 
+    protected int id;
     protected String nome;
     protected String email;
     protected String senha;
@@ -58,6 +59,14 @@ public abstract class Entidade implements Serializable {
         this.senha = senha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getHabilidades() {
         return habilidades;
     }
@@ -80,6 +89,14 @@ public abstract class Entidade implements Serializable {
 
     public List<Telefone> getTelefones() {
         return telefones;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     public void setPapel(Papel papel) {

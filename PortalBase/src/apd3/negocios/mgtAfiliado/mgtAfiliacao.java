@@ -14,7 +14,7 @@ import apd3.negocios.mgtAfiliado.entities.Entidade;
 public interface mgtAfiliacao {
     
     //Verificar se os métodos conferem
-    
+    public Entidade getDetalhe(String email);
     public Entidade getDetalhe(int id);
     public boolean notificaAfiliado(int id, String msg);
     public boolean update(Entidade e);

@@ -33,5 +33,10 @@ class TelefoneDAO implements ITelefoneDAO{
     public boolean remove(Telefone e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean insert(Telefone e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

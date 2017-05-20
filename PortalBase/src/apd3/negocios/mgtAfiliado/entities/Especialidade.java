@@ -10,6 +10,7 @@ package apd3.negocios.mgtAfiliado.entities;
  * @author vmrib
  */
 public class Especialidade {
+    private int Id;
     private String areaEspecialidade;
 
     public String getAreaEspecialidade() {
@@ -18,6 +19,14 @@ public class Especialidade {
 
     public void setAreaEspecialidade(String areaEspecialidade) {
         this.areaEspecialidade = areaEspecialidade;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
     
 }

@@ -16,7 +16,7 @@ public interface IController {
     /**
      * Executa uma ação de acordo com a necessidade.
      */
-    public void execute();
+    public void execute(String action);
 
     /**
      * Inicializa a(s) variável(is) de um controller.

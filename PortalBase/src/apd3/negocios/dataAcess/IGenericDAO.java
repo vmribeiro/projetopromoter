@@ -20,4 +20,6 @@ interface IGenericDAO<E> {
     public boolean update(E e);
 
     public boolean remove(E e);
+    
+    public boolean insert(E e);
 }
