@@ -20,7 +20,7 @@ class PapelDAO implements IPapelDAO{
     }
 
     @Override
-    public List<Entidade> findByAll() {
+    public List<Entidade> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

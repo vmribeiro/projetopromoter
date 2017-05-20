@@ -20,7 +20,7 @@ class TelefoneDAO implements ITelefoneDAO{
     }
 
     @Override
-    public List<Telefone> findByAll() {
+    public List<Telefone> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

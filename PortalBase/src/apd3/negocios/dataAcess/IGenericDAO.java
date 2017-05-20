@@ -15,7 +15,7 @@ interface IGenericDAO<E> {
 
     public E findById(int id);
 
-    public List<E> findByAll();
+    public List<E> findAll();
 
     public boolean update(E e);
 

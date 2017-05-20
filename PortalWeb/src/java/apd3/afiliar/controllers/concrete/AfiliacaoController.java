@@ -37,10 +37,13 @@ public class AfiliacaoController extends AbstractController {
     public void execute(String action) {
         switch (action) {
             case "inserir":
+                inserir();
                 break;
             case "atualizar":
+                atualizar();
                 break;
             case "getDetalhe":
+                getDetalhe();
                 break;
         }
     }
@@ -58,7 +61,7 @@ public class AfiliacaoController extends AbstractController {
     }
 
     private void inserir() {
-        Entidade e = initRequestParams();
+        Entidade e = getRequestParams();
 
         mgtAfiliacao mgt = new mgtAfiliacaoImpl();
         boolean resp = mgt.insert(e);
@@ -83,7 +86,7 @@ public class AfiliacaoController extends AbstractController {
     }
 
     private void atualizar() {
-        Entidade e = initRequestParams();
+        Entidade e = getRequestParams();
 
         mgtAfiliacao mgt = new mgtAfiliacaoImpl();
         boolean resp = mgt.update(e);
@@ -94,7 +97,7 @@ public class AfiliacaoController extends AbstractController {
         }
     }
 
-    private Entidade initRequestParams() {
+    private Entidade getRequestParams() {
         email = this.getRequest().getParameter("email");
         senha = this.getRequest().getParameter("senha");
         habilidades = this.getRequest().getParameter("habilidades");
