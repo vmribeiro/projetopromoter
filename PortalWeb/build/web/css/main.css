@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#cadastro-section {
+    background-image: url(../img/fundo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 0px #fff;
+}
+
+#login-section {
+    height: 900px;
+    background-image: url(../img/fundologin.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 0px #fff;
+}
+
+input {
+    border-bottom: 1px solid #000 !important;
+}
+
+textarea {
+    border-bottom: 1px solid #000 !important;
+}
+
+#main-menu {
+    box-shadow: none;
+}
+
+#logo-menu {
+    margin-left: 20px
+}
+
+.not-display {
+    display: none;
+}
+
+#div-cadastro {
+}
+
+#cadastro-form {
+    background-color: rgba(225, 225, 225, 0.7);
+}
