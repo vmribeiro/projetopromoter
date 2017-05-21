@@ -6,12 +6,19 @@
 package apd3.negocios.mgtAfiliado.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author vmrib
  */
+@Entity
 public class Servico implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int Id;
     private Promoter promoter;
     private String nome;

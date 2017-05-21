@@ -12,18 +12,7 @@ import java.io.Serializable;
  * @author vmrib
  */
 public abstract class Papel implements Serializable {
-    private int Id;
     public Papel getPapel(){
         return this;
     }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-    
-    
 }

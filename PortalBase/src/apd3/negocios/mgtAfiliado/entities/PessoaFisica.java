@@ -7,6 +7,8 @@ package apd3.negocios.mgtAfiliado.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  *
@@ -16,6 +18,9 @@ public class PessoaFisica extends Entidade implements Serializable {
 
     private String cpf;
     private Date dtaNasc;
+
+    public PessoaFisica() {
+    }
     
     public PessoaFisica(Papel papel) {
         super(papel);

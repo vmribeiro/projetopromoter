@@ -18,8 +18,13 @@ import apd3.negocios.mgtAfiliado.entities.Telefone;
 import apd3.negocios.mgtAfiliado.mgtAfiliacao;
 import apd3.negocios.mgtAfiliado.mgtAfiliacaoImpl;
 import apd3.negocios.mgtAcesso.mtgAcessoImpl;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +32,7 @@ import java.util.ArrayList;
  */
 public class AfiliacaoController extends AbstractController {
 
-    String email, senha, habilidades, cpf, cnpj, dtaNasc;// Implementar na página web
+    String nome, email, senha, habilidades, cpf, cnpj, dtaNasc;// Implementar na página web
     List<Especialidade> especialidadesObj;
     List<Telefone> telefonesObj;
     List<Servico> servicosObj;
@@ -47,8 +52,8 @@ public class AfiliacaoController extends AbstractController {
                 break;
         }
     }
-    
-    private void getDetalhe(){
+
+    private void getDetalhe() {
         int id = Integer.parseInt(this.getRequest().getParameter("id"));
         mgtAfiliacao mgt = new mgtAfiliacaoImpl();
         Entidade e = mgt.getDetalhe(id);
@@ -98,12 +103,20 @@ public class AfiliacaoController extends AbstractController {
     }
 
     private Entidade getRequestParams() {
+        nome = this.getRequest().getParameter("nome");
         email = this.getRequest().getParameter("email");
         senha = this.getRequest().getParameter("senha");
         habilidades = this.getRequest().getParameter("habilidades");
         cpf = this.getRequest().getParameter("cpf");
         cnpj = this.getRequest().getParameter("cnpj");
         dtaNasc = this.getRequest().getParameter("dtaNasc");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fmtDtaNasc = new Date();
+        try {
+            fmtDtaNasc = sdf.parse(dtaNasc);
+        } catch (ParseException ex) {
+            Logger.getLogger(AfiliacaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         //Definir para cada campo adicionado na web um objeto no array correspondente
         especialidadesObj = new ArrayList();
@@ -112,7 +125,7 @@ public class AfiliacaoController extends AbstractController {
         //passa-se pela url a qtdEspecialidades
         Especialidade esp = new Especialidade();
         for (int i = 1; i < Integer.parseInt(this.getRequest().getParameter("qtdEspecialidades")); i++) {
-            if (i==0) {
+            if (i == 0) {
                 continue;
             }
             esp.setAreaEspecialidade(this.getRequest().getParameter("especialidade" + i));
@@ -124,7 +137,7 @@ public class AfiliacaoController extends AbstractController {
         //passa-se pela url a qtdTelefones
         Telefone telefone = new Telefone();
         for (int i = 0; i < Integer.parseInt(this.getRequest().getParameter("qtdTelefones")); i++) {
-            if (i==0) {
+            if (i == 0) {
                 continue;
             }
             String telefoneCompleto = this.getRequest().getParameter("telefone" + i);
@@ -136,7 +149,7 @@ public class AfiliacaoController extends AbstractController {
         enderecosObj = new ArrayList();
         Endereco end = new Endereco();
         for (int i = 0; i < Integer.parseInt(this.getRequest().getParameter("qtdEnderecos")); i++) {
-            if (i==0) {
+            if (i == 0) {
                 continue;
             }
             end.setCep(this.getRequest().getParameter("cep" + i));
@@ -154,16 +167,28 @@ public class AfiliacaoController extends AbstractController {
             e = new PessoaFisica(promoter);
         }
 
+        e.setEmail(email);
+        e.setNome(nome);
+        e.setSenha(senha);
+        e.setHabilidades(habilidades);
+
         servicosObj = new ArrayList();
         Servico servico = new Servico((Promoter) promoter);
         Promoter p = (Promoter) e.getPapel();
         for (int i = 0; i < Integer.parseInt(this.getRequest().getParameter("qtdServicos")); i++) {
-            if (i==0) {
+            if (i == 0) {
                 continue;
             }
             servico.setDescricao(this.getRequest().getParameter("descricaoServico" + i));
             servico.setNome(this.getRequest().getParameter("nomeServico" + i));
             servicosObj.add(servico);
+        }
+
+        if (e instanceof PessoaFisica) {
+            ((PessoaFisica) e).setCpf(cpf);
+            ((PessoaFisica) e).setDtaNasc(fmtDtaNasc);
+        }else if(e instanceof PessoaJuridica){
+            ((PessoaJuridica) e).setCnpj(cnpj);
         }
 
         p.setServicos(servicosObj);

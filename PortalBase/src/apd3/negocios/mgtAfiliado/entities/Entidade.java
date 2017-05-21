@@ -8,26 +8,42 @@ package apd3.negocios.mgtAfiliado.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author vmrib
  */
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class Entidade implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;
     protected String nome;
     protected String email;
     protected String senha;
     protected String habilidades;
     protected State status;
-    
+
     protected Papel papel;
-    
+
     //Dinamizar essas coisas na parte web
     protected List<Endereco> enderecos;
     protected List<Telefone> telefones;
 
+    public Entidade() {
+    }
+    
     public Entidade(Papel papel) {
         this.papel = papel;
         this.status = new StateNaoValidado();
@@ -102,26 +118,27 @@ public abstract class Entidade implements Serializable {
     public void setPapel(Papel papel) {
         this.papel = papel;
     }
-    
-    public void addEndereco(Endereco e){
+
+    public void addEndereco(Endereco e) {
         this.enderecos.add(e);
     }
-    
-    public void addTelefone(Telefone t){
+
+    public void addTelefone(Telefone t) {
         this.telefones.add(t);
     }
-    
-    public void removeEndereco(Endereco e){
+
+    public void removeEndereco(Endereco e) {
         this.enderecos.remove(e);
     }
-    
-    public void removeTelefone(Telefone t){
+
+    public void removeTelefone(Telefone t) {
         this.telefones.remove(t);
     }
-    
+
     /**
-     * Valida o status 
-     * @return 
+     * Valida o status
+     *
+     * @return
      */
     public void validarEntidade() {
         this.status = new StateValidado();

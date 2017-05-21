@@ -7,6 +7,7 @@ package apd3.negocios.dataAcess;
 
 import apd3.negocios.mgtAfiliado.entities.Entidade;
 import java.util.List;
+import javax.persistence.Entity;
 
 /**
  *
