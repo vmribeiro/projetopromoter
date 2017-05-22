@@ -14,6 +14,7 @@
     </head>
     <body>
         ${msg}
+        ${error}
         <a href="login.jsp">Login</a>
         <a href="cadastro.jsp">Cadastro</a>
     </body>
