@@ -94,6 +94,7 @@ $("#btnServico").click(function () {
 });
 
 function get_action(form) {
-        form.action = "FrontControllerServlet?control=Afiliacao&qtdEspecialidades="+qtdEspecialidades+"&Servicos="+
+        form.action = "FrontControllerServlet?control=Afiliacao&action=inserir&qtdEspecialidades="+qtdEspecialidades+"&qtdServicos="+
                 qtdServicos+"&qtdTelefones="+qtdTelefones+"&qtdEnderecos="+qtdEnderecos;
+        
 }

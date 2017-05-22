@@ -16,11 +16,7 @@ public class ControllerFactory {
             //Cria uma instância de uma classe que implemente a interface Controller a partir de uma classe
             IController controller = (IController) actionClass.newInstance();
             return (IController) actionClass.newInstance();
-        } catch (java.lang.InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e) {
+        } catch (java.lang.InstantiationException | IllegalAccessException | ClassCastException e) {
             e.printStackTrace();
         }
         return null;

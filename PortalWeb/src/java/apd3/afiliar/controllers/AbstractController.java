@@ -29,6 +29,7 @@ public abstract class AbstractController implements IController {
         returnPage = page;
     }
 
+    @Override
     public String getReturnPage() {
         return returnPage;
     }
@@ -52,10 +53,10 @@ public abstract class AbstractController implements IController {
     protected void setResponse(String sessionName, String returnPage, Object value){
         if (value instanceof Entidade) {
             this.setReturnPage(returnPage);
-            this.getRequest().setAttribute(sessionName, (Entidade) value);
+            this.getRequest().getSession().setAttribute(sessionName, (Entidade) value);
         }else{
             this.setReturnPage(returnPage);
-            this.getRequest().setAttribute(sessionName, (String) value);
+            this.getRequest().getSession().setAttribute(sessionName, (String) value);
         }
     }
 

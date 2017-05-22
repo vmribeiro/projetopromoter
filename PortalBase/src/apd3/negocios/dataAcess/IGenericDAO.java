@@ -17,9 +17,9 @@ interface IGenericDAO<E> {
 
     public List<E> findAll();
 
-    public boolean update(E e);
+    public E update(E e);
 
     public boolean remove(E e);
     
-    public boolean insert(E e);
+    public E insert(E e);
 }

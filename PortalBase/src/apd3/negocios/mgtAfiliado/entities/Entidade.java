@@ -8,14 +8,19 @@ package apd3.negocios.mgtAfiliado.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import org.hibernate.annotations.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  *
@@ -24,7 +29,11 @@ import org.hibernate.annotations.Entity;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public abstract class Entidade implements Serializable {
+@NamedQueries({
+    @NamedQuery(name = "Entidade.findByEmail", query = "SELECT e FROM Entidade e WHERE email= :email")
+    ,@NamedQuery(name = "Entidade.findByCPF", query = "SELECT e FROM Entidade e WHERE cpf= :cpf")
+    ,@NamedQuery(name = "Entidade.findByCNPJ", query = "SELECT e from Entidade e WHERE cnpj= :cnpj")})
+public class Entidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,24 +42,35 @@ public abstract class Entidade implements Serializable {
     protected String email;
     protected String senha;
     protected String habilidades;
-    protected State status;
 
+    
+    @OneToOne
+    protected State state;
+
+    @OneToOne
     protected Papel papel;
 
+    @Column(insertable = false, updatable = false)
+    private String tipo;
+
     //Dinamizar essas coisas na parte web
+    @Transient
     protected List<Endereco> enderecos;
+    @Transient
     protected List<Telefone> telefones;
 
     public Entidade() {
-    }
-    
-    public Entidade(Papel papel) {
-        this.papel = papel;
-        this.status = new StateNaoValidado();
-        this.enderecos = new ArrayList();
-        this.telefones = new ArrayList();
+        enderecos = new ArrayList<>();
+        telefones = new ArrayList<>();
+
     }
 
+//    public Entidade(Papel papel) {
+//        this.papel = papel;
+//        this.status = "invalid";
+//        this.enderecos = new ArrayList();
+//        this.telefones = new ArrayList();
+//    }
     public String getNome() {
         return nome;
     }
@@ -89,10 +109,6 @@ public abstract class Entidade implements Serializable {
 
     public void setHabilidades(String habilidades) {
         this.habilidades = habilidades;
-    }
-
-    public boolean getStatus() {
-        return status.getValidado();
     }
 
     public Papel getPapel() {
@@ -135,12 +151,22 @@ public abstract class Entidade implements Serializable {
         this.telefones.remove(t);
     }
 
-    /**
-     * Valida o status
-     *
-     * @return
-     */
-    public void validarEntidade() {
-        this.status = new StateValidado();
+    public String getTipo() {
+        return tipo;
     }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+   
+
 }

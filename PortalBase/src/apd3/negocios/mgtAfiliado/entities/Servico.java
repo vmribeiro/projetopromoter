@@ -6,10 +6,14 @@
 package apd3.negocios.mgtAfiliado.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,21 +24,19 @@ public class Servico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Id;
-    private Promoter promoter;
+
     private String nome;
     private String descricao;
+    
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(nullable = false, updatable = false)
+    private Promoter promoter;
 
-    public Servico(Promoter promoter) {
-        this.promoter = promoter;
+    public Servico() {
     }
 
-    public Promoter getPromoter() {
-        return promoter;
-    }
 
-    public void setPromoter(Promoter promoter) {
-        this.promoter = promoter;
-    }
+    
 
     public String getNome() {
         return nome;
@@ -59,6 +61,15 @@ public class Servico implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Promoter getPromoter() {
+        return promoter;
+    }
+
+    public void setPromoter(Promoter promoter) {
+        this.promoter = promoter;
+    }
+    
     
     
 }

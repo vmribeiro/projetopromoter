@@ -5,12 +5,12 @@
  */
 package apd3.negocios.dataAcess;
 
-import apd3.negocios.mgtAfiliado.entities.Entidade;
+import apd3.negocios.mgtAfiliado.entities.Papel;
 
 /**
  *
  * @author vmrib
  */
-public interface IPapelDAO extends IGenericDAO<Entidade>{
+public interface IPapelDAO extends IGenericDAO<Papel>{
     
 }

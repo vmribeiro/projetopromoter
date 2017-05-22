@@ -11,42 +11,53 @@ import apd3.negocios.mgtAfiliado.entities.Entidade;
 
 /**
  *
- * @author vmrib
+ * @author Rabah Zeineddine, Victor Moraes , Jessica Yumi
  */
 public class mgtAfiliacaoImpl implements mgtAfiliacao{
     
     private final IEntidadeDAO edao = (IEntidadeDAO) DAOFactory.getDAOByFullClassName("Entidade");;
 
     @Override
-    public Entidade getDetalhe(int id) {
+    public Entidade getDetalheById(int id) {
         Entidade entidade = edao.findById(id);
         return entidade;
     }
 
     @Override
-    public boolean notificaAfiliado(int id, String msg) {
-        boolean resp = EmailUtil.enviarEmail();
+    public boolean notificaAfiliado(String email,String subject, String msg) {
+        boolean resp = EmailUtil.sendEmail(email, subject, msg);
         return resp;
     }
 
     @Override
-    public boolean update(Entidade e) {
-        boolean resp = edao.update(e);
-        return resp;
+    public Entidade update(Entidade e) {
+         return edao.update(e);
     }
 
     @Override
-    public boolean insert(Entidade e) {
-        boolean resp = edao.insert(e);
-        return resp;
+    public Entidade insert(Entidade e) {
+        e = edao.insert(e);
+        return e;
     }
 
     @Override
-    public Entidade getDetalhe(String email) {
+    public Entidade getDetalheByEmail(String email) {
         Entidade entidade = edao.findByEmail(email);
         return entidade;
     }
 
+    @Override
+    public Entidade getDetalheByCPF(String CPF) {
+        Entidade entidade = edao.findByCPF(CPF);
+        return entidade;
+    }
+
+    @Override
+    public Entidade getDetalheByCNPF(String cnpj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
     
 }

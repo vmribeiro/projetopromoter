@@ -7,7 +7,7 @@ package apd3.negocios.dataAcess;
 
 /**
  *
- * @author vmrib
+ * @author Rabah Zeineddine, Victor Moraes , Jessica Yumi
  */
 public class DAOFactory {
     public static final IGenericDAO getDAOByClass(Class actionClass) {
@@ -24,7 +24,7 @@ public class DAOFactory {
     public static final IGenericDAO getDAOByFullClassName(String className) {
         try {
             //Cria uma string contendo o endereço da classe
-            String name = "apd3.negocios.dataAcess" + className + "DAO";
+            String name = "apd3.negocios.dataAcess." + className + "DAO";
             //Faz o carregamento de uma classe de acordo com a string que foi passada por parâmetro contendo o endereço da classe
             Class actionClass = Class.forName(name);
             //Utiliza um método para retornar uma instância da classe que foi carregada com o Class.forName(name)

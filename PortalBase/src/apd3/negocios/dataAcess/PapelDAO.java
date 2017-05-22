@@ -5,8 +5,12 @@
  */
 package apd3.negocios.dataAcess;
 
-import apd3.negocios.mgtAfiliado.entities.Entidade;
+import apd3.negocios.mgtAfiliado.entities.Papel;
+import apd3.negocios.mgtAfiliado.entities.Promoter;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,28 +19,46 @@ import java.util.List;
 class PapelDAO implements IPapelDAO{
 
     @Override
-    public Entidade findById(int id) {
+    public Papel findById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Entidade> findAll() {
+    public List<Papel> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean update(Entidade e) {
+    public Papel update(Papel e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean remove(Entidade e) {
+    public boolean remove(Papel e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean insert(Entidade e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Papel insert(Papel e) {
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PersistenceUnit");
+        EntityManager em = emf.createEntityManager();
+        try{
+        em.getTransaction().begin();
+        em.persist(e);
+        em.flush();
+        em.refresh(e);
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        return e;
+        }catch(Exception ex){
+            System.out.println("Erro na insercao do papel : "+ex);
+            return null;
+        }
     }
+
+  
+
     
 }

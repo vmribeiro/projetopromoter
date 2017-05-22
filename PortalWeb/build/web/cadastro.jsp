@@ -36,6 +36,8 @@
         <div class="row">
             <div class="col s10 offset-s1 m8 offset-m2" id="div-cadastro">
                 <ul class="collapsible" data-collapsible="accordion" id="ul-form-cadastro">
+                    
+                    ${error}
                     <li>
                         <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Cadastro</div>
                         <div class="collapsible-body" id="cadastro-form">
@@ -54,11 +56,11 @@
                                     
                                     <!--Endereco fim-->
                                     
-                                    <!--Especialidade inicio-->
+<!--                                    Especialidade inicio
                                     <div class="input-field col s12 m10 offset-m1 black-text">
-                                        <input id="especialidade" name="especialidade" type="text" class="">
+                                        <input id="especialidade" name="especialidade" type="text" class="" name="">
                                         <label for="especialidade" class="black-text">Especialidade</label>
-                                    </div>
+                                    </div>-->
                                     <!--Especialidade fim-->
 
                                     <div class="row">
@@ -98,19 +100,19 @@
                                     
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 black-text">
-                                            <input id="email" type="email" class="">
+                                            <input id="email" type="email" class="" name="email">
                                             <label for="email" class="black-text">E-mail</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 black-text">
-                                            <input id="senha1" type="password" class="">
+                                            <input id="senha1" type="password" class="" name="senha">
                                             <label for="senha1" class="black-text">Senha</label>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12 m10 offset-m1 black-text">
-                                                <input id="senha2" type="password" class="">
+                                                <input id="senha2" type="password" class="" name="confirmarSenha">
                                                 <label for="senha2" class="black-text">Digite a senha novamente</label>
                                             </div>
                                         </div>
@@ -130,13 +132,13 @@
                                     <!--Início pessoa física-->
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 pf black-text">
-                                            <input id="cpf" type="text" class="">
+                                            <input id="cpf" type="text" class="" name="cpf">
                                             <label for="cpf" class="black-text">CPF</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 pf black-text">
-                                            <input id="dtaNasc" type="text" class="">
+                                            <input id="dtaNasc" type="text" class="" name="dtaNasc">
                                             <label for="dtaNasc" class="black-text">Data de Nascimento</label>
                                         </div>
                                     </div>
@@ -145,7 +147,7 @@
                                     <!--Início pessoa jurídica-->
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 not-display pj black-text">
-                                            <input id="cnpj" type="text" class="">
+                                            <input id="cnpj" type="text" class="" name="cnpj">
                                             <label for="cnpj" class="black-text">CNPJ</label>
                                         </div>
                                     </div>

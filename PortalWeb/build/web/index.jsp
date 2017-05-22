@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        ${msg}
         <a href="login.jsp">Login</a>
         <a href="cadastro.jsp">Cadastro</a>
     </body>

@@ -25,7 +25,7 @@ class EspecialidadeDAO implements IEspecialidadeDAO{
     }
 
     @Override
-    public boolean update(Entidade e) {
+    public Entidade update(Entidade e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -35,7 +35,7 @@ class EspecialidadeDAO implements IEspecialidadeDAO{
     }
 
     @Override
-    public boolean insert(Entidade e) {
+    public Entidade insert(Entidade e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

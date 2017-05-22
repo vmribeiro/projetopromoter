@@ -9,9 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
@@ -19,11 +17,13 @@ import javax.persistence.Id;
  */
 @Entity
 public class Promoter extends Papel implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+
+    @Transient
     private List<Especialidade> especialidades;
+    @Transient
     private List<Servico> servicos;
+
+    private String objetivo;
 
     public Promoter() {
         this.especialidades = new ArrayList();
@@ -33,20 +33,20 @@ public class Promoter extends Papel implements Serializable {
     public Promoter(List<Especialidade> especialidades) {
         this.especialidades = especialidades;
     }
-    
-    public void addEspecialidade(Especialidade e){
+
+    public void addEspecialidade(Especialidade e) {
         this.especialidades.add(e);
     }
-    
-    public void addServico(Servico e){
+
+    public void addServico(Servico e) {
         this.servicos.add(e);
     }
-    
-    public void removeEspecialidade(Especialidade e){
+
+    public void removeEspecialidade(Especialidade e) {
         this.especialidades.remove(e);
     }
-    
-    public void removeServico(Servico e){
+
+    public void removeServico(Servico e) {
         this.servicos.remove(e);
     }
 
@@ -64,5 +64,16 @@ public class Promoter extends Papel implements Serializable {
 
     public void setServicos(List<Servico> servicos) {
         this.servicos = servicos;
-    }    
+    }
+  
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+    
+    
 }

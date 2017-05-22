@@ -1,24 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apd3.negocios.mgtAfiliado.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
-/**
- *
- * @author vmrib
- */
+@Entity
 public class PessoaJuridica extends Entidade implements Serializable {
 
     private String cnpj;
     private String razaoSocial;
-    
-    public PessoaJuridica(Papel papel) {
-        super(papel);
+
+    public PessoaJuridica() {
     }
+
+    
+    
+//    public PessoaJuridica(Papel papel) {
+//        super(papel);
+//    }
 
     public String getCnpj() {
         return cnpj;

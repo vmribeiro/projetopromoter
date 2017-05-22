@@ -6,13 +6,58 @@
 package apd3.negocios.mgtAfiliado.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 /**
  *
  * @author vmrib
  */
-public abstract class Papel implements Serializable {
-    public Papel getPapel(){
-        return this;
+@Entity
+@Inheritance ( strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "PAPEL", discriminatorType = DiscriminatorType.STRING)
+public  class Papel implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    
+    @Column(insertable = false, updatable = false)
+    private String papel;
+    
+
+    public Papel() {
+    }  
+    
+    
+//    public Papel getPapel(){
+//        return this;
+//    }
+
+    public long getId() {
+        return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPapel() {
+        return papel;
+    }
+
+    public void setPapel(String papel) {
+        this.papel = papel;
+    }
+    
+    
+    
+    
 }

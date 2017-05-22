@@ -13,4 +13,6 @@ import apd3.negocios.mgtAfiliado.entities.Entidade;
  */
 public interface IEntidadeDAO extends IGenericDAO<Entidade> {
     public Entidade findByEmail(String email);
+    public Entidade findByCPF(String cpf);
+    public Entidade findByCNPJ(String CNPJ);
 }
