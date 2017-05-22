@@ -32,20 +32,22 @@ public class AcessoController extends AbstractController {
 
     private void login() {
         String email = this.getRequest().getParameter("email");
-        String senha = this.getRequest().getParameter("password");
+        String senha = this.getRequest().getParameter("senha");
 
         mgtAcesso mgt = new mtgAcessoImpl();
+        
         Entidade e = mgt.autentica(email, senha);
 
         if (e != null) {
-            setResponse("user", "index.jsp", e);
+            setResponse("user", "/index.jsp", e);
         } else {
             //Criar página de erro
-            setResponse("error", "login.jsp", "Senha ou email não corresponde.");
+            setResponse("error", "/login.jsp", "Senha ou email não corresponde.");
         }
     }
 
     private void logoff() {
         this.getRequest().getSession().invalidate();
+            setReturnPage("/index.jsp");
     }
 }

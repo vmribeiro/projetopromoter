@@ -4,6 +4,8 @@
     Author     : vmrib
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,6 +20,9 @@
 </head>
 
 <body>
+    <c:if test="${user}">
+        <c:redirect url="index.jsp"></c:redirect>
+    </c:if>
     <section id="login-section">
         <nav class="transparent" id="main-menu">
             <div class="nav-wrapper">
@@ -40,8 +45,17 @@
                         <div class="collapsible-header active"><i class="material-icons">send</i>Login</div>
                         <div class="collapsible-body" id="cadastro-form">
                             <div class="row">
-                                <form class="col s12" method="post" action="FrontControllerServlet?control=Acesso">
-
+                            <form class="col s12" method="post" action="FrontControllerServlet?control=Acesso&action=login">
+                                <c:choose>
+                                    <c:when test="${error}">
+                                        <p>${error}</p>
+                                        <c:remove var="error" scope="session"></c:remove>
+                                    </c:when>
+                                        <c:when test="${msg}">
+                                        <p>${msg}</p>
+                                        <c:remove var="msg" scope="session"></c:remove>
+                                    </c:when>
+                                </c:choose> 
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 black-text">
                                             <input id="email" name="email" type="email" class="validate">
@@ -51,7 +65,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 black-text">
-                                            <input id="senha1" name="password" type="password" class="validate">
+                                            <input id="senha1" name="senha" type="password" class="validate">
                                             <label for="senha1" class="black-text">Senha</label>
                                         </div>
                                     </div>
@@ -63,7 +77,7 @@
                                             </button>
                                         </div>
                                         <div class="col s12 m4 right row">
-                                            <a class="waves-effect waves-light btn indigo darken-4  col s10" href="cadastro.html">Cadastre-se</a>
+                                            <a class="waves-effect waves-light btn indigo darken-4  col s10" href="cadastro.jsp">Cadastre-se</a>
                                         </div>
                                     </div>
 

@@ -17,7 +17,7 @@ public interface mgtAfiliacao {
     public Entidade getDetalheByEmail(String email);
     public Entidade getDetalheByCPF(String CPF);
     public Entidade getDetalheById(int id);
-    public Entidade getDetalheByCNPF(String cnpj);
+    public Entidade getDetalheByCNPJ(String cnpj);
     public boolean notificaAfiliado(String email,String subject, String msg);
     public Entidade update(Entidade e);
     public Entidade insert(Entidade e);

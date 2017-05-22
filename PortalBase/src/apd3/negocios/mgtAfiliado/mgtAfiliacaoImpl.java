@@ -53,8 +53,9 @@ public class mgtAfiliacaoImpl implements mgtAfiliacao{
     }
 
     @Override
-    public Entidade getDetalheByCNPF(String cnpj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Entidade getDetalheByCNPJ(String cnpj) {
+        Entidade entidade = edao.findByCNPJ(cnpj);
+        return entidade;
     }
 
     

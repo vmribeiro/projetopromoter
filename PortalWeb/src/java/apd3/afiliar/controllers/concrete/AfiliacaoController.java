@@ -115,7 +115,7 @@ public class AfiliacaoController extends AbstractController {
                 aux = mgt.getDetalheByCPF(((PessoaFisica) e).getCpf());
                 resMessage = "CPF já existe!";
             } else {
-                aux = mgt.getDetalheByCNPF(((PessoaJuridica) e).getCnpj());
+                aux = mgt.getDetalheByCNPJ(((PessoaJuridica) e).getCnpj());
                 resMessage = "CNPJ já existe!";
 
             }
@@ -124,7 +124,7 @@ public class AfiliacaoController extends AbstractController {
 
                 if (e != null) {
                     resp = mgt.notificaAfiliado(e.getEmail(), "Validação da Conta",
-                            "Para ativar a sua conta, <a href='http://http://192.168.1.100:8080/PortalWeb/FrontControllerServlet?control=Afiliacao&action=validacao&token=" + e.getState().getToken() + "&id=" + e.getId() + "'>Clique aqui</a>");
+                            "Para ativar a sua conta, <a href='http://192.168.0.17:8080/PortalWeb/FrontControllerServlet?control=Afiliacao&action=validacao&token=" + e.getState().getToken() + "&id=" + e.getId() + "'>Clique aqui</a>");
                 } else {
                     resp = false;
                 }
@@ -139,7 +139,7 @@ public class AfiliacaoController extends AbstractController {
                 setResponse("error", "/cadastro.jsp", resMessage);
             }
         } else {
-            setResponse("error", "/cadastro.jsp", "Falha no cadastro do usuário.");
+            setResponse("error", "/cadastro.jsp", "Email já existe!.");
         }
     }
 

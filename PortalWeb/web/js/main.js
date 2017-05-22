@@ -15,7 +15,8 @@ $(document).ready(function () {
     $('select').material_select();
 
     $("#rg").mask("99.999.999-9");
-    $("#cnpj").mask("99999999-9");
+    
+    $("#cnpj").mask("99.999.999/9999-99");
     $("#cpf").mask("999.999.999-99");
     $("#dtaNasc").mask("99/99/9999");
 });
