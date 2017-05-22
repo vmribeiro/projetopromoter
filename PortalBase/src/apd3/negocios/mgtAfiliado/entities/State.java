@@ -5,6 +5,7 @@
  */
 package apd3.negocios.mgtAfiliado.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -14,14 +15,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.hibernate.jpa.internal.schemagen.JpaSchemaGenerator.Generation;
 
 /**
  *
  * @author rabah
  */
 @Entity
-public class State {
+public class State implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

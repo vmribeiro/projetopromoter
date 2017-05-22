@@ -1,7 +1,7 @@
 <%-- 
     Document   : cadastro
     Created on : 20/05/2017, 14:40:08
-    Author     : vmrib
+    Author     : Rabah Zeineddine ,Victor Moraes , Jessica Yumi
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +19,7 @@
     </head>
 
     <body>
-         <c:if test="${user}">
+         <c:if test="${user!=null}">
         <c:redirect url="index.jsp"></c:redirect>
     </c:if>
         <section id="cadastro-section">
@@ -42,11 +42,11 @@
                     <ul class="collapsible" data-collapsible="accordion" id="ul-form-cadastro">
 
                         <c:choose>
-                            <c:when test="${error}">
+                            <c:when test="${error!=null}">
                                 <p>${error}</p>
                                 <c:remove var="error" scope="session"></c:remove>
                             </c:when>
-                            <c:when test="${msg}">
+                            <c:when test="${msg!=null}">
                                 <p>${msg}</p>
                                 <c:remove var="msg" scope="session"></c:remove>
                             </c:when>
